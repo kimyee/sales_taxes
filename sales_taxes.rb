@@ -13,8 +13,7 @@ class Sales_taxes
 	def menu_options
 		puts " "
 		puts "~~~~~~ Main Menu ~~~~~~~"
-		puts "[1] Create a new basket"
-		puts "[2] Print Receipt of all baskets"
+		puts "[1] Create a basket"
 		puts "[3] Exit"
 		puts "Enter the number corresponding to the action you wish to perform: "
 	end
@@ -39,7 +38,7 @@ class Sales_taxes
 		puts " "
 		puts "~~~~~~~~~~~ Basket ~~~~~~~~~~~"
 		puts "[1] Add an item to your basket"
-		puts "[2] Print receipt of this basket"
+		puts "[2] Print receipt"
 		puts "[3] Reutrn to the main menu"
 		puts "Enter the number corresponding to the action you wish to perform: "
 	end
@@ -60,9 +59,19 @@ class Sales_taxes
 		print "Enter the price of the item (without the $ symbol): "
 		item_price = gets.chomp
 		item = Item.new(item_quantity, item_name, item_price)
-		Database.items
+		Database.items(item)
 		puts " "
 		puts "-- Item added --"
+		puts " "
+		basket_options
+		@user_basket_input = gets.to_i
+		basket_call_option(@user_basket_input)
+	end
+
+	def current_basket_receipt
+		puts " "
+		puts "~~~~~~~~~~ Your Receipt ~~~~~~~~~~"
+		Database.display_items
 		puts " "
 		basket_options
 		@user_basket_input = gets.to_i

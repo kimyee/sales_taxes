@@ -1,5 +1,8 @@
+require 'debugger'
+
 class Database
 	@items = []
+	@total = []
 	
 	def self.basket
 		@basket
@@ -10,52 +13,45 @@ class Database
 	end
 
 	def self.display_items
-		@items.each do |item|
+		@items.map do |item|
 			@input_quantity = "#{item.item_quantity}"
 			@input_name = "#{item.item_name}"	
 			@input_price = "#{item.item_price}"
 			@price = @input_price.to_f.round(2)
 
-		if @input_name.include?("imported") && @input_name.include?("music") || @input_name.include?("perfume")
-			@import_taxed = (@price * 0.15) + @price
-			puts "#{@input_quantity } #{@input_name}: #{@import_taxed.round(2)}"
-		elsif @input_name.include?("imported") 
-			@import_price = (@price * 0.05) + @price
-			puts "#{@input_quantity } #{@input_name}: #{@import_price.round(2)}"
-		elsif @input_name.include?("music") || @input_name.include?("perfume")
-			@taxed_price = (@price * 0.10) + @price
-			puts "#{@input_quantity} #{@input_name}: #{@taxed_price.round(2)}"
-		else
-			puts "#{@input_quantity} #{@input_name}: #{@price.round(2)}"
+			if @input_name.include?("imported") && @input_name.include?("music") || @input_name.include?("perfume")
+				@import_taxed = (@price * 0.15) + @price
+				@total << @import_taxed
+				puts "#{@input_quantity } #{@input_name}: #{@import_taxed.round(2)}"
+			elsif @input_name.include?("imported") 
+				@import_price = (@price * 0.05) + @price
+				@total << @import_price
+				puts "#{@input_quantity } #{@input_name}: #{@import_price.round(2)}"
+			elsif @input_name.include?("music") || @input_name.include?("perfume")
+				@taxed_price = (@price * 0.10) + @price
+				@total << @taxed_price
+				puts "#{@input_quantity} #{@input_name}: #{@taxed_price.round(2)}"
+			else
+				@total << @price
+				puts "#{@input_quantity} #{@input_name}: #{@price.round(2)}"
+			end
 		end
 
-		# @price if @price != nil
-		# @taxed_price if @taxed_price != nil
-		# @import_price if @import_price != nil
-
-		# if @price != nil && @taxed_price != nil && @import_price != nil && @import_taxed != nil
-		# 	print "Total: "
-		# 	print @price + @taxed_price + @import_price + @import_taxed
-		# elsif @price !=nil && @taxed_price != nil
-		# 	print "Total: "
-		# 	print @price + @taxed_price
-		# elsif @import_taxed != nil && @taxed_price != nil
-		# 	print "Total: "	
-		# 	print @import_taxed + @import_price
-		# end
-
-		# if @price != nil && @taxed_price != nil
-		# 	puts "Total: "
-		# 	puts @price + @taxed_price
-		# end
-
+		if @price == nil
+			@price.to_f
 		end
+		if @taxed_price == nil
+			@taxed_price.to_f
+		end
+		if @import_price == nil
+			@import_price.to_f
+		end
+		if @import_taxed == nil
+			@import_taxed.to_f
+		end
+		print "Total: "
+		print @total.inject(:+).round(2)
 
-
-
-		# @items.index do |item|
-		# 	puts "#{item.item_quantity} #{item.item_name}: #{item.item_price}"
-		# end
-
+			
 	end
 end

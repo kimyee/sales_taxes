@@ -1,4 +1,6 @@
 require "./database"
+require "./item"
+require "./basket"
 
 class Sales_taxes
 	def main_menu
@@ -76,22 +78,6 @@ class Sales_taxes
 		basket_options
 		@user_basket_input = gets.to_i
 		basket_call_option(@user_basket_input)
-	end
-end
-
-class Basket
-attr_accessor :user_menu_input
-	def initialize(user_menu_input)
-		@user_menu_input = user_menu_input
-	end
-end
-
-class Item
-	attr_accessor :item_quantity, :item_name, :item_price
-	def initialize(item_quantity, item_name, item_price)
-		@item_quantity = item_quantity
-		@item_name = item_name
-		@item_price = item_price
 	end
 end
 

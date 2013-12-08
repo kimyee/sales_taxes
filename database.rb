@@ -3,6 +3,7 @@ require 'debugger'
 class Database
 	@items = []
 	@total = []
+	@sales_taxes = []
 	
 	def self.basket
 		@basket
@@ -22,14 +23,17 @@ class Database
 			if @input_name.include?("imported") && @input_name.include?("music") || @input_name.include?("perfume")
 				@import_taxed = (@price * 0.15) + @price
 				@total << @import_taxed
+				@sales_taxes << @import_taxed - @price
 				puts "#{@input_quantity } #{@input_name}: #{@import_taxed.round(2)}"
 			elsif @input_name.include?("imported") 
 				@import_price = (@price * 0.05) + @price
 				@total << @import_price
+				@sales_taxes << @import_price - @price
 				puts "#{@input_quantity } #{@input_name}: #{@import_price.round(2)}"
 			elsif @input_name.include?("music") || @input_name.include?("perfume")
 				@taxed_price = (@price * 0.10) + @price
 				@total << @taxed_price
+				@sales_taxes << @taxed_price - @price
 				puts "#{@input_quantity} #{@input_name}: #{@taxed_price.round(2)}"
 			else
 				@total << @price
@@ -49,6 +53,9 @@ class Database
 		if @import_taxed == nil
 			@import_taxed.to_f
 		end
+		print "Sales Taxes: "
+		puts @sales_taxes.inject(:+).round(2)
+
 		print "Total: "
 		print @total.inject(:+).round(2)
 

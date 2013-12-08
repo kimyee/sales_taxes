@@ -18,26 +18,26 @@ class Database
 			@input_quantity = "#{item.item_quantity}"
 			@input_name = "#{item.item_name}"	
 			@input_price = "#{item.item_price}"
-			@price = @input_price.to_f.round(2)
+			@price = @input_price.to_f
 
-			if @input_name.include?("imported") && @input_name.include?("music") || @input_name.include?("perfume")
+			if @input_name.include?("imported") && @input_name.include?("music") || @input_name.include?("imported") && @input_name.include?("perfume")
 				@import_taxed = (@price * 0.15) + @price
 				@total << @import_taxed
 				@sales_taxes << @import_taxed - @price
-				puts "#{@input_quantity } #{@input_name}: #{@import_taxed.round(2)}"
+				puts "#{@input_quantity } #{@input_name}: #{'%.2f' % @import_taxed}"
 			elsif @input_name.include?("imported") 
 				@import_price = (@price * 0.05) + @price
 				@total << @import_price
 				@sales_taxes << @import_price - @price
-				puts "#{@input_quantity } #{@input_name}: #{@import_price.round(2)}"
+				puts "#{@input_quantity } #{@input_name}: #{'%.2f' % @import_price}"
 			elsif @input_name.include?("music") || @input_name.include?("perfume")
 				@taxed_price = (@price * 0.10) + @price
 				@total << @taxed_price
 				@sales_taxes << @taxed_price - @price
-				puts "#{@input_quantity} #{@input_name}: #{@taxed_price.round(2)}"
+				puts "#{@input_quantity} #{@input_name}: #{'%.2f' % @taxed_price}"
 			else
 				@total << @price
-				puts "#{@input_quantity} #{@input_name}: #{@price.round(2)}"
+				puts "#{@input_quantity} #{@input_name}: #{'%.2f' % @price}"
 			end
 		end
 
@@ -54,10 +54,10 @@ class Database
 			@import_taxed.to_f
 		end
 		print "Sales Taxes: "
-		puts @sales_taxes.inject(:+).round(2)
+		puts "%.2f" % @sales_taxes.inject(:+)
 
 		print "Total: "
-		print @total.inject(:+).round(2)
+		print "%.2f" % @total.inject(:+)
 
 			
 	end

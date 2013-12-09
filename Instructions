@@ -30,7 +30,7 @@ Instructions
 
 9. At the Basket menu, enter 2 to print receipt.
 
-10. Once you have viewed your receipt you can now end the application by holding down the control key and press 'C'.
+10. Once you have viewed your receipt you can now end the application by entering '3' to return to the main menu and then enter '3' to exit the application
 
 11. Run the program again by entering ruby sales_taxes.rb
 
@@ -46,7 +46,7 @@ Instructions
 
 13. At the Basket menu, enter 2 to print receipt.
 
-14. Once you have viewed your receipt you can now end the application (press control C, just as above).
+14. Once you have viewed your receipt you can return to the main menu and exit the program.
 
 15. Run the program again by entering ruby sales_taxes.rb
 
@@ -70,4 +70,4 @@ Instructions
 
 17. At the Basket menu, enter 2 to print receipt.
 
-18. Once you have viewed your receipt you can now end the application. 
+18. Once you have viewed your receipt you can return to the main menu and exit the program.

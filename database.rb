@@ -1,4 +1,5 @@
 require 'debugger'
+require "./float"
 
 class Database
 	@items = []
@@ -24,20 +25,20 @@ class Database
 				@import_taxed = (@price * 0.15) + @price
 				@total << @import_taxed
 				@sales_taxes << @import_taxed - @price
-				puts "#{@input_quantity } #{@input_name}: #{'%.2f' % @import_taxed}"
+				puts "#{@input_quantity } #{@input_name}: #{'%.2f' % @import_taxed.round_by(0.05)}"
 			elsif @input_name.include?("imported") 
 				@import_price = (@price * 0.05) + @price
 				@total << @import_price
 				@sales_taxes << @import_price - @price
-				puts "#{@input_quantity } #{@input_name}: #{'%.2f' % @import_price}"
+				puts "#{@input_quantity } #{@input_name}: #{'%.2f' % @import_price.round_by(0.05)}"
 			elsif @input_name.include?("music") || @input_name.include?("perfume")
 				@taxed_price = (@price * 0.10) + @price
 				@total << @taxed_price
 				@sales_taxes << @taxed_price - @price
-				puts "#{@input_quantity} #{@input_name}: #{'%.2f' % @taxed_price}"
+				puts "#{@input_quantity} #{@input_name}: #{'%.2f' % @taxed_price.round_by(0.05)}"
 			else
 				@total << @price
-				puts "#{@input_quantity} #{@input_name}: #{'%.2f' % @price}"
+				puts "#{@input_quantity} #{@input_name}: #{'%.2f' % @price.round_by(0.05)}"
 			end
 		end
 
@@ -54,10 +55,10 @@ class Database
 			@import_taxed.to_f
 		end
 		print "Sales Taxes: "
-		puts "%.2f" % @sales_taxes.inject(:+)
+		puts "%.2f" % @sales_taxes.inject(:+).round_by(0.05)
 
 		print "Total: "
-		print "%.2f" % @total.inject(:+)
+		print "%.2f" % @total.inject(:+).round_by(0.05)
 
 			
 	end

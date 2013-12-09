@@ -1,0 +1,73 @@
+Instructions
+
+1. In your terminal, go to where sales_taxes.rb is located and run the application by typing in ruby sales_taxes.rb. You will be running the program 3 times.
+
+2. The Main Menu of the application will appear. Enter 1 to create a basket
+
+3. The Basket menu will appear. Enter 1 to add an item to your basket.
+
+4. You will now have to enter the following item info as the application prompts you.
+   Application prompt: "Enter the item (ex: book):"
+   Enter: book
+   Application prompt: "Enter the quantity of the item: "
+   Enter: 1
+   Application prompt: "Enter the price of the item (without the $ symbol)"
+   Enter: 12.49
+
+5. You will now have returned to the Basket menu. Enter 1 to add another item to your basket.
+
+6. Enter the following item info; in the following order as the application prompts you.
+   Enter: music CD
+   Enter: 1
+   Enter: 14.99
+
+7. You will now have returned to the Basket menu. Enter 1 to add another item to your basket.
+
+8. Enter the following item info; in the following order as the application prompts you.
+		Enter: chocolate bar
+		Enter: 1
+		Enter: 0.85
+
+9. At the Basket menu, enter 2 to print receipt.
+
+10. Once you have viewed your receipt you can now end the application by holding down the control key and press 'C'.
+
+11. Run the program again by entering ruby sales_taxes.rb
+
+12. Repeat the steps of creating a basket and adding an item to your basket. You will be adding 2 items to your basket. The item info is as follows:
+		1st item info:
+			Enter: imported box of chocolates
+			Enter: 1
+			Enter: 10.00
+		2nd item info:
+			Enter: imported bottle of perfume
+			Enter: 1
+			Enter: 47.50
+
+13. At the Basket menu, enter 2 to print receipt.
+
+14. Once you have viewed your receipt you can now end the application (press control C, just as above).
+
+15. Run the program again by entering ruby sales_taxes.rb
+
+16. Repeat the steps of creating a basket and adding an item to your basket. You will be adding 4 items to your basket. The item info is as follows:
+		1st item info:
+			Enter: imported bottle of perfume
+			Enter: 1
+			Enter: 27.99
+		2nd item info:
+			Enter: bottle of perfume
+			Enter: 1
+			Enter: 18.99
+		3rd item info:
+			Enter: packet of headache pills 
+			Enter: 1
+			Enter: 9.75
+		4th item info:
+			Enter: box of imported chocolates
+			Enter: 1
+			Enter: 11.25
+
+17. At the Basket menu, enter 2 to print receipt.
+
+18. Once you have viewed your receipt you can now end the application. 
